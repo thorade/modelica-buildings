@@ -7,12 +7,11 @@ function quadraticLinear
  input Real x2 "Independent variable for linear part";
  output Real y "Result";
 protected
- Real x1Sq;
+ Real x1Sq=x1*x1;
 algorithm
-  x1Sq :=x1*x1;
-  y :=a[1] + a[2]*x1 + a[3]*x1Sq + (a[4] + a[5]*x1 + a[6]*x1Sq)*x2;
+  y := smooth(999, a[1] + a[2]*x1 + a[3]*x1Sq + (a[4] + a[5]*x1 + a[6]*x1Sq)*x2);
 
-  annotation (smoothOrder=999, Documentation(info="<html>
+  annotation (Inline=true, Documentation(info="<html>
 This function computes
 <p align=\"center\" style=\"font-style:italic;\">
   y =   a<sub>1</sub> + a<sub>2</sub>  x<sub>1</sub>
